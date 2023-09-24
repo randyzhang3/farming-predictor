@@ -323,7 +323,7 @@ if selected_state == "Iowa":
 
 
         alfafax, alfafay = readAlfafaData()
-        st.write("Which fertalizers will you use for Alfalfa hay?")
+        st.write("Which fertilizers will you use for alfalfa hay?")
         use_alfafa_Urea = st.checkbox('Alfalfa Nitrogen, priced at $206.72 per acre')
         use_alfafa_AmmoniumSulfate = st.checkbox('Alfalfa Ammonium Sulfate, priced at $60 per acre')
 
@@ -341,14 +341,14 @@ if selected_state == "Iowa":
 
         soyBeanx, soyBeany = readSoybeanData()
 
-        st.write("The following are questions related to fertilizers for soybean")
+        st.write("The following are questions related to fertilizers for soybeans")
         selected_soybean_Nitrogen = st.checkbox('Soybean Nitrogen, priced at $10.2 per acre')
         selected_soybean_Phosphate = None
         selected_soybean_Potash = st.checkbox('Soybean Potash, priced at $28.7 per acre')
-        use_soybean_phosphate = st.checkbox('Will you use phosphate for soybean?')
+        use_soybean_phosphate = st.checkbox('Will you use phosphate for soybeans?')
 
         if use_soybean_phosphate:
-            selectedPhosphate = st.selectbox('Which phosphate will you use for soybean?',
+            selectedPhosphate = st.selectbox('Which phosphate will you use for soybeans?',
                                              ["DAP, priced at $22.5 per acre", "MAP, priced at $22.3 per acre"])
 
         # Need to finish because the phosphate isn't state, cost for corn
@@ -361,11 +361,11 @@ if selected_state == "Iowa":
         if selected_soybean_Potash == "Yes":
             soybeanPotoshCost = 0.322 * 89
 
-        st.write("The following are questions related to pesticides for soybean")
-        use_soybean_pesticides = st.checkbox('Will you use pesticides for soybean?')
+        st.write("The following are questions related to pesticides for soybeans")
+        use_soybean_pesticides = st.checkbox('Will you use pesticides for soybeans?')
 
         if use_soybean_pesticides:
-            st.write("Which pesticide will you use for soybean:")
+            st.write("Which pesticides will you use for soybeans:")
             use_soybean_Atrazine = st.checkbox('Soybean Atrazine, priced at 3.72 per acre')
             use_soybean_Mesotrione = st.checkbox('Soybean Mesotrione, priced at 4.69 per acre')
 
