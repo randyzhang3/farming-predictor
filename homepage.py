@@ -14,7 +14,7 @@ import seaborn as sb
 # Function used to predict the expected ear yeild per acre for next year
 
 # Create a dropdown menu of possible states to select
-selected_state = st.selectbox('Please select a state',["Select a state", "Iowa", "Colorado"])
+selected_state = st.selectbox('Please select a state',["Select a state", "Alabama", "Alaska","Arizona","Arkansas","Iowa", "Ohio"])
 
 # Display the selected state chosen
 st.write("State selected:", selected_state)
