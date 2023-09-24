@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 def createComparison(Corn_revenue, Hay_revenue, Alfalfa_Hay_revenue, Soybeans_revenue):
     st.title('Comparison of different crop profits')
     data = pd.DataFrame({
-        'Crop Type': ['Corn', 'Hay', 'Alfalfa Hay', 'Soybeans_revenue'],
+        'Crop Type': ['Corn', 'Hay', 'Alfalfa Hay', 'Soybean'],
         'Predicted Profit': [Corn_revenue, Hay_revenue, Alfalfa_Hay_revenue, Soybeans_revenue]
     })
 
