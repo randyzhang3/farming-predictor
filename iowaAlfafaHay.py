@@ -62,6 +62,7 @@ def generateAlfafaTable(revenue, seedCost, fertilizerCost, landCost, equipmentCo
     st.markdown(df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
 
 def createAlfafaChart(revenue, seedCost, fertilizerCost, landCost, equipmentCost, expenses):
+    st.title('Revenue and Expense Bar Chart')
     data = pd.DataFrame({
         'Revenue/Expense Type': ['Revenue', 'Seed', 'Fertilizer', 'Land', 'Equipment', 'Profit'],
         'Value': [revenue, -1 * seedCost, -1 * fertilizerCost, -1 * landCost, -1 * equipmentCost, revenue - expenses]

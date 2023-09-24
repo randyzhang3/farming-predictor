@@ -73,3 +73,20 @@ def generateSoyBeanTable(revenue, seedCost, fertilizerCost, pesticideCost, landC
     df = pd.DataFrame(data)
     df = df.round(2)
     st.markdown(df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+
+def generateSoybeanGraph(revenue, seedCost, fertilizerCost, pesticideCost, landCost, equipmentCost, expenses):
+        st.title('Revenue and Expense Bar Chart')
+
+        # Create a Seaborn bar chart
+
+        data = pd.DataFrame({
+            'Revenue/Expense Type': ['Revenue', 'Seed', 'Fertilizer', 'Pesticide', 'Land', 'Equipment', 'Profit'],
+            'Value': [revenue, -1 * seedCost, -1 * fertilizerCost, -1 * pesticideCost, -1 * landCost,
+                      -1 * equipmentCost, revenue - expenses]
+        })
+
+        fig, ax = plt.subplots()
+        sb.barplot(x='Revenue/Expense Type', y='Value', data=data, ax=ax)
+        ax.set_xlabel('Category')
+        ax.set_ylabel('Value')
+        st.pyplot(fig)
