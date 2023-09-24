@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from iowaCorn import readCornData, createCornPlot, calculateCornRevenue, generateCornTable, calculateExpense, generateTotalRevenueGraph
 from iowaHay import readHayData, createHayPlot, calculateHayExpense, generateHayRevenue, generateHayTable, createHayChart
 from iowaAlfafaHay import readAlfafaData, createAlfafaPlot, calculateAlfafaExpense, calculateAlfafaRevenue, generateAlfafaTable, createAlfafaChart
-from iowaSoybeans import readSoybeanData, createSoybeanPlot, calculateSoyBeanRevenue, calculateSoyBeanExpense, generateSoyBeanTable
+from iowaSoybeans import readSoybeanData, createSoybeanPlot, calculateSoyBeanRevenue, calculateSoyBeanExpense, generateSoyBeanTable, generateSoybeanGraph
 import seaborn as sb
 
 
@@ -177,14 +177,14 @@ if selected_state == "Iowa":
 
 
         st.write("The following are questions related to fertilizers")
-        selected_Nitrogen = st.checkbox('Nitrogen, priced at $89.4 per acre')
+        selected_Nitrogen = st.checkbox('Nitrogen, priced at $10.2 per acre')
         selectedPhosphate = None
-        selected_Potash = st.checkbox('Potash, priced at $28.01 per acre')
+        selected_Potash = st.checkbox('Potash, priced at $28.7 per acre')
         use_phosphate = st.checkbox('Will you use phosphate?')
 
         if use_phosphate:
             selectedPhosphate = st.selectbox('Which phosphate will you use?',
-                            ["DAP, priced at $28.22 per acre", "MAP, priced at $27.95 per acre"])
+                            ["DAP, priced at $22.5 per acre", "MAP, priced at $22.3 per acre"])
 
 
         nitrogenCost = 0
@@ -192,13 +192,13 @@ if selected_state == "Iowa":
         phosphateCost = 0
         # Need to finish because the phosphate isn't state, cost for corn
         if selected_Nitrogen:
-            nitrogenCost = 0.6 * 149
+            nitrogenCost = 0.6 * 17
         if selectedPhosphate == "DAP":
-            phosphateCost = 0.409 * 69
+            phosphateCost = 0.409 * 55
         if selectedPhosphate == "MAP":
-            phosphateCost = .405 * 69
+            phosphateCost = .405 * 55
         if selected_Potash == "Yes":
-            potoshCost = 0.322 * 87
+            potoshCost = 0.322 * 89
 
         st.write("The following are questions related to pesticides")
         use_pesticides = st.checkbox('Will you use pesticides?')
@@ -216,22 +216,25 @@ if selected_state == "Iowa":
         if use_Mesotrione:
             mesotrioneCost = .121 * 38.75
 
-        revenue = calculateSoyBeanRevenue(soyBeanx,soyBeany,acres)
-        soyBeanSeedCost = int(calculateExpense(40, acres))
-        fertilizerCost = int(calculateExpense(nitrogenCost + potoshCost + phosphateCost, acres))
-        pesticideCost = int(calculateExpense(atrazineCost+mesotrioneCost, acres))
+        soybeanRevenue = calculateSoyBeanRevenue(soyBeanx,soyBeany,acres)
+        soybeanSeedCost = int(calculateExpense(40, acres))
+        soybeanFertilizerCost = int(calculateExpense(nitrogenCost + potoshCost + phosphateCost, acres))
+        soybeanPesticideCost = int(calculateExpense(atrazineCost+mesotrioneCost, acres))
+        soybeanExpenses = (soybeanSeedCost + soybeanFertilizerCost + soybeanPesticideCost + landCost + equipmentCost)
         selectedSoybeanVisualization = st.selectbox('Select a visualization for revenue, cost, and profit',
                                                    ["Select a visualization for revenue, cost, and profit", "Table",
                                                     "Bar Chart", "Both"])
 
         if selectedSoybeanVisualization == 'Table':
-            generateSoyBeanTable(revenue,soyBeanSeedCost, fertilizerCost,pesticideCost,landCost,equipmentCost)
+            generateSoyBeanTable(soybeanRevenue,soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost,landCost,equipmentCost)
 
         if selectedSoybeanVisualization == 'Bar Chart':
-            createAlfafaChart(alfafaRevenue, alfafaSeeds, alfafaFertilizers, landCost, equipmentCost, alfafaExpenses)
+            generateSoybeanGraph(soybeanRevenue, soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost, landCost, equipmentCost, soybeanExpenses)
 
         if selectedSoybeanVisualization == 'Both':
-            generateSoyBeanTable(revenue, soyBeanSeedCost, fertilizerCost, pesticideCost, landCost, equipmentCost)
+            generateSoyBeanTable(soybeanRevenue,soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost,landCost,equipmentCost)
+            generateSoybeanGraph(soybeanRevenue, soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost, landCost,
+                             equipmentCost, soybeanExpenses)
 
 
 
