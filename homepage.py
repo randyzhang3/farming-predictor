@@ -253,7 +253,7 @@ if selected_state == "Iowa":
                                  equipmentCost, soybeanExpense)
 
         if selectedSoybeanVisualization == 'Both':
-            generateSoyBeanTable(soybeanRevenue, soybeanSeedCost, fertilizerCost, pesticideCost, landCost, equipmentCost)
+            generateSoyBeanTable(soybeanRevenue, soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost, landCost, equipmentCost)
             generateSoybeanGraph(soybeanRevenue, soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost, landCost,
                                 equipmentCost, soybeanExpense)
 
@@ -381,7 +381,6 @@ if selected_state == "Iowa":
         soybeanExpense = (soybeanSeedCost + soybeanFertilizerCost + soybeanPesticideCost + landCost + equipmentCost)
 
         soybeanProfit = soybeanRevenue- soybeanExpense
-
 
         createComparison(cornProfit,hayProfit,alfalfaProfit,soybeanProfit)
 
