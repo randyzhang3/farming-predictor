@@ -1,0 +1,17 @@
+import pandas as pd
+import seaborn as sb
+import matplotlib.pyplot as plt
+import streamlit as st
+from sklearn.linear_model import LinearRegression
+
+def createComparison(Corn_revenue, Hay_revenue, Alfalfa_Hay_revenue, Soybeans_revenue):
+    data = pd.DataFrame({
+        'Crop Type': ['Corn', 'Hay', 'Alfalfa Hay', 'Soybeans_revenue'],
+        'Revenue': [Corn_revenue, Hay_revenue, Alfalfa_Hay_revenue, Soybeans_revenue]
+    })
+
+    fig, ax = plt.subplots()
+    sb.barplot(x='Crop Type', y='Revenue', data=data, ax=ax)
+    ax.set_xlabel('Crop')
+    ax.set_ylabel('Predicted Revenue')
+    st.pyplot(fig)
