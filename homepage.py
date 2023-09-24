@@ -235,20 +235,3 @@ if selected_state == "Iowa":
             generateSoyBeanTable(soybeanRevenue,soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost,landCost,equipmentCost)
             generateSoybeanGraph(soybeanRevenue, soybeanSeedCost, soybeanFertilizerCost, soybeanPesticideCost, landCost,
                              equipmentCost, soybeanExpenses)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
