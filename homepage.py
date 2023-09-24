@@ -302,7 +302,6 @@ if selected_state == "Iowa":
 
         cornProfit = cornRevenue - expenses
 
-        st.write(cornProfit)
 
         hayx, hayy = readHayData()
 
